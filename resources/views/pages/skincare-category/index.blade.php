@@ -12,7 +12,7 @@
             <div class="flex flex-col col-span-full bg-white shadow-sm rounded-xl">
                 <header class="flex justify-between items-center border-b border-gray-100 px-5 py-4">
                     <h2 class="font-semibold text-gray-800">Data Kategori Skincare</h2>
-                    <button class="w-32 py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Tambah data</button>
+                    <a href="{{ route('skincare-category.create') }}" class="w-32 py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Tambah data</a>
                 </header>
                 <div class="py-10">
                     <table id="jumbotroon-datatable">

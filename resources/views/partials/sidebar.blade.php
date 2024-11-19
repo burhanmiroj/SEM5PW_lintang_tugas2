@@ -6,7 +6,7 @@
                 class="lg:hidden lg:sidebar-expanded:block 2xl:block">Pages</span></h3>
         <ul class="mt-3">
             {{-- SINGLE LIST --}}
-            <li class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
+            <li class="pl-4 pr-3 py-2 rounded-lg mb-1 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
                 <a href="{{ route('dashboard') }}" class="block {{ request()->routeIs('dashboard') ? 'text-blue-500 hover:text-blue-600' : 'text-gray-800 hover:text-gray-700' }} truncate transition duration-150">
                     <div class="flex items-center">
                         <iconify-icon icon="iconamoon:category" class="text-lg"></iconify-icon>
@@ -15,7 +15,7 @@
                 </a>
             </li>
             {{-- SINGLE LIST --}}
-            <li class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
+            <li class="pl-4 pr-3 py-2 rounded-lg mb-1 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
                 <a href="{{ route('skincare-category.index') }}" class="block {{ request()->routeIs('skincare-category.*') ? 'text-blue-500 hover:text-blue-600' : 'text-gray-800 hover:text-gray-700' }} truncate transition duration-150">
                     <div class="flex items-center">
                         <iconify-icon icon="material-symbols:category-search-outline-rounded" class="text-lg"></iconify-icon>
@@ -24,7 +24,7 @@
                 </a>
             </li>
             {{-- SINGLE LIST --}}
-            <li class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
+            <li class="pl-4 pr-3 py-2 rounded-lg mb-1 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
                 <a href="{{ route('skincare.index') }}" class="block {{ request()->routeIs('skincare.*') ? 'text-blue-500 hover:text-blue-600' : 'text-gray-800 hover:text-gray-700' }} truncate transition duration-150">
                     <div class="flex items-center justify-between">
                         <div class="grow flex items-center">
@@ -37,7 +37,7 @@
                     </div>
                 </a>
             </li>
-            {{-- <li class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
+            {{-- <li class="pl-4 pr-3 py-2 rounded-lg mb-1 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] false">
                 <a href="#0"
                     class="block text-gray-800 truncate transition duration-150 hover:text-gray-900">
                     <div class="flex items-center justify-between">

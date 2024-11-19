@@ -11,21 +11,28 @@
             {{-- SINGLE CARD --}}
             <div class="flex flex-col col-span-full bg-white shadow-sm rounded-xl">
                 <header class="flex justify-between items-center border-b border-gray-100 px-5 py-4">
-                    <h2 class="font-semibold text-gray-800">Data Skincare</h2>
-                    <button class="w-32 py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Tambah data</button>
+                    <h2 class="font-semibold text-gray-800">Edit Data Kategori Skincare</h2>
                 </header>
-                <div class="py-10">
-                    <table id="jumbotroon-datatable">
-                        <thead>
-                            <tr class="capitalize">
-                                <th>NO</th>
-                                <th>Kategori</th>
-                                <th>Nama Skincare</th>
-                                <th>QTY</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
+                <div class="p-5">
+                    <form action="{{ route('skincare-category.update', Crypt::encryptString($skincareCategory->id)) }}" method="POST" class="space-y-5">
+                        @method('PATCH')
+                        @csrf
+                        {{-- SINGLE GROUP INPUT --}}
+                        <div>
+                            <label class="text-gray-800 text-sm mb-2 block">Nama Kategori</label>
+                            <div class="relative flex items-center">
+                                <input value="{{ $skincareCategory->category_name }}" name="nama_kategori" type="text" class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Nama kategori skincare" />
+                            </div>
+                            @error('nama_kategori')
+                                <span class="text-xs mt-1 italic text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        {{-- BUTTON --}}
+                        <div class="w-full flex justify-end space-x-5">
+                            <a href="{{ route('skincare-category.index') }}" class="flex justify-center w-32 py-3 text-sm tracking-wide rounded-lg text-white bg-slate-600 hover:bg-slate-700 focus:outline-none">Batal Edit</a>
+                            <button type="submit" class="flex justify-center w-32 py-3 text-sm tracking-wide rounded-lg text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none">Update Data</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -59,12 +66,6 @@
                     {
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
-                        orderable: false, 
-                        searchable: false
-                    },
-                    {
-                        data: 'category_name',
-                        name: 'category_name',
                         orderable: false, 
                         searchable: false
                     },

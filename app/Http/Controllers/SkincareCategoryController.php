@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\SkincareCategory;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Crypt;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SkincareCategoryController extends Controller
 {
@@ -38,7 +39,7 @@ class SkincareCategoryController extends Controller
                 })
                 ->addColumn('aksi', function($row) {
                     $aksi = '<div class="flex items-center space-x-3 mt-3 lg:mt-0">
-                                <a href="/kelas/' . Crypt::encryptString($row->id) . '/edit" class="w-7 h-7 rounded-full flex justify-center items-center text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300">
+                                <a href="/skincare-category/' . Crypt::encryptString($row->id) . '/edit" class="w-7 h-7 rounded-full flex justify-center items-center text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300">
                                     <iconify-icon icon="material-symbols:edit-outline-rounded"></iconify-icon>
                                 </a>
                                 <div x-cloak x-data="{ show'. $row->id .': false }" class="flex items-center">
@@ -57,7 +58,7 @@ class SkincareCategoryController extends Controller
                                                     <iconify-icon icon="material-symbols:close-rounded"></iconify-icon>
                                                     <span class="font-semibold text-xs uppercase ml-1">Batalkan</span>
                                                 </button>
-                                                <form action="/kelas/' . $row->id . '" method="POST">
+                                                <form action="/skincare-category/' . Crypt::encryptString($row->id) . '" method="POST">
                                                     ' . method_field('DELETE') . '
                                                     '. csrf_field() .'
                                                     <button type="submit" class="w-32 h-9 flex justify-center items-center rounded-sm focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-red-700 transition-all duration-200 bg-red-500 hover:bg-red-600 text-white">
@@ -85,7 +86,7 @@ class SkincareCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.skincare-category.create');
     }
 
     /**
@@ -93,7 +94,18 @@ class SkincareCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required'
+        ]);
+
+        SkincareCategory::create([
+            'category_name' => $request->nama_kategori
+        ]);
+
+        Alert::success('Berhasil', 'Berhasil menambah kategori skincare!')
+            ->autoClose(3000);
+
+        return redirect()->route('skincare-category.index');
     }
 
     /**
@@ -107,24 +119,42 @@ class SkincareCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SkincareCategory $skincareCategory)
+    public function edit($skincareCategoryID)
     {
-        //
+        $skincareCategory = SkincareCategory::where('id', Crypt::decryptString($skincareCategoryID))->first();
+
+        return view('pages.skincare-category.edit', compact('skincareCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SkincareCategory $skincareCategory)
+    public function update(Request $request, $skincareCategoryID)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required'
+        ]);
+
+        SkincareCategory::where('id', Crypt::decryptString($skincareCategoryID))->update([
+            'category_name' => $request->nama_kategori
+        ]);
+
+        Alert::success('Berhasil', 'Berhasil mengubah kategori skincare!')
+            ->autoClose(3000);
+
+        return redirect()->route('skincare-category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SkincareCategory $skincareCategory)
+    public function destroy($skincareCategoryID)
     {
-        //
+        SkincareCategory::where('id', Crypt::decryptString($skincareCategoryID))->delete();
+
+        Alert::success('Berhasil', 'Berhasil mengubah kategori skincare!')
+            ->autoClose(3000);
+
+        return redirect()->route('skincare-category.index');
     }
 }
