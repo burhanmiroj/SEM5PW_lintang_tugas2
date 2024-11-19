@@ -12,16 +12,17 @@
             <div class="flex flex-col col-span-full bg-white shadow-sm rounded-xl">
                 <header class="flex justify-between items-center border-b border-gray-100 px-5 py-4">
                     <h2 class="font-semibold text-gray-800">Data Skincare</h2>
-                    <button class="w-32 py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Tambah data</button>
+                    <a href="{{ route('skincare.create') }}" class="w-32 py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Tambah data</a>
                 </header>
                 <div class="py-10">
-                    <table id="jumbotroon-datatable">
+                    <table id="skincare-datatable">
                         <thead>
                             <tr class="capitalize">
                                 <th>NO</th>
-                                <th>Kategori</th>
                                 <th>Nama Skincare</th>
                                 <th>QTY</th>
+                                <th>Deskripsi</th>
+                                <th>Harga</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -41,7 +42,7 @@
     <script>
         // DATATABLE
         $(function () {
-            let LP_DATATABLE = $('#jumbotroon-datatable').DataTable({
+            let LP_DATATABLE = $('#skincare-datatable').DataTable({
                 processing: true,
                 responsive: true,
                 serverSide: true,
@@ -50,7 +51,7 @@
                 pageLength: 10,
                 lengthMenu: [10, 20, 50],
                 ajax: {
-                    url: "{{ route('skincare-category.index') }}",
+                    url: "{{ route('skincare.index') }}",
                     data: function(d) {
                         d.search = $('input[type="search"]').val()
                     }
@@ -63,14 +64,26 @@
                         searchable: false
                     },
                     {
-                        data: 'category_name',
-                        name: 'category_name',
+                        data: 'skincare_name',
+                        name: 'skincare_name',
                         orderable: false, 
                         searchable: false
                     },
                     {
-                        data: 'category_name',
-                        name: 'category_name',
+                        data: 'qty',
+                        name: 'qty',
+                        orderable: false, 
+                        searchable: false
+                    },
+                    {
+                        data: 'description',
+                        name: 'description',
+                        orderable: false, 
+                        searchable: false
+                    },
+                    {
+                        data: 'price',
+                        name: 'price',
                         orderable: false, 
                         searchable: false
                     },

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Skincare extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function skincare_category()
+    {
+        return $this->belongsTo(SkincareCategory::class);
+    }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('photo');
             $table->string('skincare_name');
             $table->string('qty');
+            $table->string('price');
             $table->text('description');
             $table->timestamps();
         });

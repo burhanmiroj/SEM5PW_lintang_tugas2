@@ -152,7 +152,7 @@ class SkincareCategoryController extends Controller
     {
         SkincareCategory::where('id', Crypt::decryptString($skincareCategoryID))->delete();
 
-        Alert::success('Berhasil', 'Berhasil mengubah kategori skincare!')
+        Alert::success('Berhasil', 'Berhasil menghapus kategori skincare!')
             ->autoClose(3000);
 
         return redirect()->route('skincare-category.index');

@@ -34,4 +34,15 @@
             </div>
         </div>
     </div>
+    <p class="text-xs text-slate-500">Kategori : ' . $row->skincare_category->category_name . '</p>
+
+    <div>
+        <div class="w-20 h-20 rounded-full overflow-hidden">
+            <img src="storage/skincare/' . $row->photo . '" class="w-full h-full object-cover" />
+        </div>
+        <div>
+            <p>' . $row->skincare_name . '</p>
+            <p class="text-xs text-slate-500">Kategori : ' . $row->skincare_category->category_name . '</p>
+        </div>
+    </div>
 @endsection

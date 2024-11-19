@@ -15,7 +15,7 @@
                     <a href="{{ route('skincare-category.create') }}" class="w-32 py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Tambah data</a>
                 </header>
                 <div class="py-10">
-                    <table id="jumbotroon-datatable">
+                    <table id="skincare-category-datatable">
                         <thead>
                             <tr class="capitalize">
                                 <th>NO</th>
@@ -39,7 +39,7 @@
     <script>
         // DATATABLE
         $(function () {
-            let LP_DATATABLE = $('#jumbotroon-datatable').DataTable({
+            let LP_DATATABLE = $('#skincare-category-datatable').DataTable({
                 processing: true,
                 responsive: true,
                 serverSide: true,
